@@ -12,6 +12,8 @@
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+.idea/codeStyles/
+.idea/workspace.xml
 
 # Generated files
 .idea/**/contentModel.xml
@@ -106,7 +108,7 @@ fabric.properties
 .idea/codestream.xml
 
 ### Gradle ###
-.gradle
+.gradle/
 build/
 
 # Ignore Gradle GUI config
