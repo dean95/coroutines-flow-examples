@@ -1,5 +1,6 @@
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.runBlocking
 
 /**
@@ -8,13 +9,11 @@ import kotlinx.coroutines.runBlocking
  * Use case: You want to transform some value to the reactive world.
  */
 
-private fun solve(value: Int): Flow<Int> {
-    TODO()
-}
+private fun solve(value: Int): Flow<Int> = flowOf(value)
 
 private fun main() = runBlocking {
     solve(5)
-            .collect {
-                println(it)
-            }
+        .collect {
+            println(it)
+        }
 }
