@@ -2,6 +2,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.runBlocking
 
 /**
@@ -10,9 +11,7 @@ import kotlinx.coroutines.runBlocking
  * Use case: You want to transform the data.
  */
 
-private fun solve(source: Flow<Int>): Flow<Int> {
-    TODO()
-}
+private fun solve(source: Flow<Int>): Flow<Int> = source.map(Int::inc)
 
 private fun main() = runBlocking {
     val source = flow {
@@ -23,7 +22,7 @@ private fun main() = runBlocking {
     }
 
     solve(source)
-            .collect {
-                println(it)
-            }
+        .collect {
+            println(it)
+        }
 }
