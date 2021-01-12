@@ -7,8 +7,8 @@ import kotlin.system.measureTimeMillis
  * Use case: Execute two network requests in parallel and wait for each other and process the combined data.
  */
 
-private suspend fun solve(first: suspend () -> Int, second: suspend () -> Int): Pair<Int, Int> {
-    TODO()
+private suspend fun solve(first: suspend () -> Int, second: suspend () -> Int): Pair<Int, Int> = coroutineScope {
+    awaitAll(async { first() }, async { second() }).let { (a, b) -> Pair(a, b) }
 }
 
 private fun main() = runBlocking {
