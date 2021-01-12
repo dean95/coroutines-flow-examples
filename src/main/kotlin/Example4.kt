@@ -9,9 +9,7 @@ import kotlinx.coroutines.runBlocking
  * Use case: Some button that can toggle two states. For instance a switch between White & Dark theme.
  */
 
-private fun solve(source: Flow<Unit>): Flow<Boolean> {
-    TODO()
-}
+private fun solve(source: Flow<Unit>): Flow<Boolean> = source.scan(false) { oldValue, _ -> oldValue.not() }
 
 private fun main() = runBlocking {
     val source = flow {
