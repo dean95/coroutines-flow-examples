@@ -22,7 +22,7 @@ private fun main() = runBlocking {
     }
 
     solve(source)
-            .collect {
-                println(it)
-            }
+        .collect {
+            println(it)
+        }
 }
