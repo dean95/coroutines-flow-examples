@@ -3,7 +3,7 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.runBlocking
 
 /**
- * Delay the entire [source] by 200ms. This includes subscribing, emissions and terminal events.
+ * Delay [source] by 200ms. This includes emissions and terminal events.
  *
  * Use case: Make a Flow "lazy" for some time. For instance, when wanting to postpone some UI action.
  */
