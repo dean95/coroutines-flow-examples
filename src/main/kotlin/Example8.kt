@@ -8,9 +8,7 @@ import kotlinx.coroutines.runBlocking
  * Use case: Make a Flow "lazy" for some time. For instance, when wanting to postpone some UI action.
  */
 
-private fun solve(source: Flow<Unit>): Flow<Unit> {
-    TODO()
-}
+private fun solve(source: Flow<Unit>): Flow<Unit> = source.onStart { delay(200) }
 
 private fun main() = runBlocking {
     val startTime = System.currentTimeMillis()
