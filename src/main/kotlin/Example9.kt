@@ -1,5 +1,6 @@
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
+import operators.takeUntilSignal
 
 /**
  * As long as the [trigger] Flow does not emit an item, keep the [main] Flow alive.
@@ -7,9 +8,7 @@ import kotlinx.coroutines.flow.*
  * Use case: Cancel a Flow when something has happened. For instance, stop polling when the user has been logged out.
  */
 
-private fun solve(main: Flow<Unit>, trigger: Flow<Unit>): Flow<Unit> {
-    TODO()
-}
+private fun solve(main: Flow<Unit>, trigger: Flow<Unit>): Flow<Unit> = main.takeUntilSignal(trigger)
 
 private fun main() = runBlocking {
 
