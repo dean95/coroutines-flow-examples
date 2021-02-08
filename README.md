@@ -11,3 +11,4 @@
 * **Example 7** - When the source emits the same value multiple times, only allow the first value to travel downstream.
 * **Example 8** - Delay the source by some fixed time.
 * **Example 9** - Collect a Flow until another Flow emits an item.
+* **Example 10** - Use one Flow and flatten it with the results of the function that returns a Flow.
