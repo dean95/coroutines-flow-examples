@@ -27,3 +27,18 @@ fun <T> Flow<T>.takeUntilSignal(signal: Flow<Unit>): Flow<T> = flow {
         }
     }
 }
+
+/**
+ * Returns a Flow that emits only the first item emitted by the source Flow during specified [timeWindowMillis] duration.
+ */
+fun <T> Flow<T>.throttleFirst(timeWindowMillis: Long): Flow<T> = flow {
+    var lastEmittedTime = 0L
+    collect {
+        val itemReceivedTime = System.currentTimeMillis()
+        val delta = itemReceivedTime - lastEmittedTime
+        if (delta >= timeWindowMillis) {
+            emit(it)
+            lastEmittedTime = System.currentTimeMillis()
+        }
+    }
+}
