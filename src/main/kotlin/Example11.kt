@@ -3,6 +3,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking
+import operators.throttleFirst
 
 /**
  * Let the first emission of the [source] within a time window of 300ms travel downstream but don't emit
@@ -12,9 +13,7 @@ import kotlinx.coroutines.runBlocking
  * click events within a given time window.
  */
 
-private fun solve(source: Flow<Unit>): Flow<Unit> {
-    TODO()
-}
+private fun solve(source: Flow<Unit>): Flow<Unit> = source.throttleFirst(300)
 
 private fun main() = runBlocking {
     val startTime = System.currentTimeMillis()
