@@ -7,9 +7,7 @@ import kotlinx.coroutines.runBlocking
  *
  * Use case: Getting a network error and you want to recover and show some default state.
  */
-private fun solve(source: Flow<Int>): Flow<Int> {
-    TODO()
-}
+private fun solve(source: Flow<Int>): Flow<Int> = source.catch { emit(5) }
 
 private fun main() = runBlocking {
     val source = flow {
