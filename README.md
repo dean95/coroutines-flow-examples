@@ -14,3 +14,5 @@
 * **Example 10** - Use one Flow and flatten it with the results of the function that returns a Flow.
 * **Example 11** - Let the first emission of the source Flow within a specified time window travel downstream but don't
   emit any other events until the next time window.
+* **Example 12** - In case the Flow emits an error, don't emit the error and instead complete the Flow with a default
+  value.
