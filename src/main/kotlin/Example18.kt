@@ -1,22 +1,34 @@
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 
 /**
- * Return a Flow that mirrors either the [first] or [second] Flow depending on whoever emits or terminates first.
+ * Await for completion of the first of given deferred values, and resume with that value right away.
  *
- * Use case: You have multiple sources and want to get the data from either one and then be consistent and not switch between multiple sources.
+ * Use case: You have multiple sources and want to get the result only from the faster one.
  */
-
-private fun solve(first: Flow<Int>, second: Flow<Int>): Flow<Int> = flow {
-    combine(first, second) { a, b ->
-
-    }
+private suspend fun <T> solve(vararg deferreds: Deferred<T>): T {
+    TODO()
 }
 
 private fun main() = runBlocking {
-    val source1 = (1..20).asFlow().onEach { delay(200) }
-    val source2 = (21..40).asFlow().onEach { delay(300) }
+    val value = solve(
+        async { firstSource() },
+        async { secondSource() },
+        async { thirdSource() }
+    )
+    println(value)
+}
 
+private suspend fun firstSource(): Int {
+    delay(100)
+    return 1
+}
 
+private suspend fun secondSource(): Int {
+    delay(200)
+    return 2
+}
+
+private suspend fun thirdSource(): Int {
+    delay(300)
+    return 3
 }
