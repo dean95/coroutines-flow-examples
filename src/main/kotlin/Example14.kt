@@ -1,5 +1,6 @@
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
+import java.lang.RuntimeException
 
 /**
  * Try the given [action] up to three times unless an [IllegalArgumentException] has been emitted.
@@ -7,7 +8,14 @@ import kotlinx.coroutines.runBlocking
  * Use case: Retry an operation for a number of times or until a valid error occurred.
  */
 private suspend fun solve(action: suspend () -> Unit) {
-    TODO()
+    repeat(3) {
+        try {
+            action()
+            return
+        } catch (e: Throwable) {
+            if (e is IllegalArgumentException) throw e
+        }
+    }
 }
 
 private fun main() = runBlocking {
