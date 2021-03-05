@@ -8,8 +8,8 @@ import kotlinx.coroutines.runBlocking
  * Use case: You have two sources of your data (cache & network request). You want to collect
  * both of them and keep the emission order.
  */
-private fun solve(first: Flow<Int>, second: Flow<Int>): Flow<Int> {
-    TODO()
+private fun solve(first: Flow<Int>, second: Flow<Int>): Flow<Int> = first.onCompletion {
+    if (it == null) emitAll(second)
 }
 
 private fun main() = runBlocking {
