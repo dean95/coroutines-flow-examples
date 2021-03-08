@@ -5,7 +5,7 @@ import kotlinx.coroutines.runBlocking
 /**
  * Return a Flow that emits the value from the given [function] when being subscribed to.
  *
- * Use case: Reactive types are lazy by default. Hence you might also want to get the value upon the subscription and not execution time.
+ * Use case: Emit functions result for each new collector.
  */
 
 private fun solve(function: () -> Long): Flow<Long> {
@@ -13,7 +13,7 @@ private fun solve(function: () -> Long): Flow<Long> {
 }
 
 private fun main() = runBlocking {
-    val flow = solve(::getCurrentTime)
+    val flow = solve(::operation)
 
     flow.collect {
         println(it)
@@ -26,6 +26,6 @@ private fun main() = runBlocking {
     }
 }
 
-private fun getCurrentTime(): Long {
-    return System.currentTimeMillis()
+private fun operation(): Long {
+    return 1000L
 }
