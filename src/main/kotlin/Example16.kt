@@ -9,7 +9,7 @@ import kotlinx.coroutines.runBlocking
  * Cancel all previously non terminated computations upon receiving
  * a new emission from [source].
  *
- * Use case: The [source] FLow is a search field and you want to issue a network request while disposing the
+ * Use case: The [source] Flow is a search field and you want to issue a network request while disposing the
  * old requests in case the user has typed something new.
  */
 fun solve(source: Flow<String>, function: suspend (String) -> Int): Flow<Int> {
