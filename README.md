@@ -16,3 +16,6 @@
   emit any other events until the next time window.
 * **Example 12** - In case the Flow emits an error, don't emit the error and instead complete the Flow with a default
   value.
+* **Example 13** - When the source emits the same value as it did last time, don't allow it to travel downstream.
+* **Example 14** - Retry an operation for a number of times or until a valid error occurred.
+* **Example 15** - Concatenate a Flow with the another Flow, one after the other, without interleaving them.
