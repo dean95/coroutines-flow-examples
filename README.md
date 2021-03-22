@@ -19,3 +19,5 @@
 * **Example 13** - When the source emits the same value as it did last time, don't allow it to travel downstream.
 * **Example 14** - Retry an operation for a number of times or until a valid error occurred.
 * **Example 15** - Concatenate a Flow with the another Flow, one after the other, without interleaving them.
+* **Example 16** - For each emission of the Flow apply the transformation and return its result. Cancel all previously
+  non terminated computations upon receiving a new emission from the source.
