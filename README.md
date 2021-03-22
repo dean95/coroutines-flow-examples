@@ -22,3 +22,4 @@
 * **Example 16** - For each emission of the Flow apply the transformation and return its result. Cancel all previously
   non terminated computations upon receiving a new emission from the source.
 * **Example 17** - Return a Flow that emits the value from the given function when being subscribed to.
+* **Example 18** - Await for completion of the first of given deferred values, and resume with that value right away.
