@@ -8,9 +8,7 @@ import kotlinx.coroutines.runBlocking
  * Use case: Emit functions result for each new collector.
  */
 
-private fun solve(function: () -> Long): Flow<Long> {
-    TODO()
-}
+private fun solve(function: () -> Long): Flow<Long> = flow { emit(function()) }
 
 private fun main() = runBlocking {
     val flow = solve(::operation)
