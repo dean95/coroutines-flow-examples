@@ -1,5 +1,5 @@
 import kotlinx.coroutines.*
-import kotlinx.coroutines.selects.select
+import operators.awaitFirst
 
 /**
  * Await for completion of the first of given deferred values, and resume with that value right away.
@@ -30,15 +30,4 @@ private suspend fun secondSource(): Int {
 private suspend fun thirdSource(): Int {
     delay(300)
     return 3
-}
-
-private suspend fun <T> awaitFirst(
-    vararg deferreds: Deferred<T>
-): T = select {
-    deferreds.forEach {
-        it.onAwait { result ->
-            deferreds.forEach { it.cancel(CancellationException()) }
-            return@onAwait result
-        }
-    }
 }
