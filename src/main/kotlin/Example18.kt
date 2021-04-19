@@ -1,19 +1,12 @@
 import kotlinx.coroutines.*
-import kotlinx.coroutines.selects.select
+import operators.awaitFirst
 
 /**
  * Await for completion of the first of given deferred values, and resume with that value right away.
  *
  * Use case: You have multiple sources and want to get the result only from the faster one.
  */
-private suspend fun <T> solve(vararg deferreds: Deferred<T>): T = select {
-    deferreds.forEach {
-        it.onAwait { result ->
-            deferreds.forEach { it.cancel(CancellationException()) }
-            return@onAwait result
-        }
-    }
-}
+private suspend fun <T> solve(vararg deferreds: Deferred<T>): T = awaitFirst(*deferreds)
 
 private fun main() = runBlocking {
     val value = solve(
