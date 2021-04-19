@@ -1,5 +1,8 @@
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -11,8 +14,17 @@ import kotlinx.coroutines.runBlocking
  * Use case: Transform any listener into a Flow.
  */
 
-private fun solve(interaction: Interaction): Flow<Int> {
-    TODO()
+private fun solve(interaction: Interaction): Flow<Int> = callbackFlow {
+    interaction.listener = {
+        when (it) {
+            null -> close()
+            else -> offer(it)
+        }
+    }
+    awaitClose {
+        interaction.listener = null
+        cancel()
+    }
 }
 
 private fun main() = runBlocking {
