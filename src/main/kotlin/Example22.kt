@@ -9,6 +9,9 @@ import kotlinx.coroutines.runBlocking
  * Group emissions of the [source] always in a list of 2 elements and skip every third element.
  *
  * Use case: Group related data while skipping over some of it.
+ *
+ * Input: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+ * Output: [0, 1], [3, 4], [6, 7], [9, 10]
  */
 private fun solve(source: Flow<Int>): Flow<List<Int>> {
     TODO()
