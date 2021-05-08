@@ -18,6 +18,7 @@
 .idea/modules/CoroutinesFlow.main.iml
 .idea/modules/CoroutinesFlow.test.iml
 .idea/modules.xml
+.idea/CoroutinesFlow.iml
 
 # Generated files
 .idea/**/contentModel.xml
