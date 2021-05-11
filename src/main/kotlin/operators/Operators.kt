@@ -56,3 +56,14 @@ suspend fun <T> awaitFirst(
         }
     }
 }
+
+/**
+ * Splits this Flow into a Flow of lists each of the exactly [chunkSize] size. Skips the [skip] items after each chunk.
+ */
+fun <T> Flow<T>.chunked(chunkSize: Int, skip: Int = 0): Flow<List<T>> =
+    this.scan(emptyList<T>()) { accumulator, value ->
+        when {
+            accumulator.size < chunkSize + skip -> accumulator + value
+            else -> listOf(value)
+        }
+    }.filter { it.size == chunkSize }
