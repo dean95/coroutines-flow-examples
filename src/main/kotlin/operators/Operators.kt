@@ -1,9 +1,8 @@
 package operators
 
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.selects.select
 
 /**
  * The [distinct] operator filters a Flow by only allowing items through that have not already been emitted.
@@ -42,3 +41,29 @@ fun <T> Flow<T>.throttleFirst(timeWindowMillis: Long): Flow<T> = flow {
         }
     }
 }
+
+/**
+ * Awaits for completion of the first of given deferred values and resumes normally with that value without waiting for
+ * other deferred computations to complete.
+ */
+suspend fun <T> awaitFirst(
+    vararg deferreds: Deferred<T>
+): T = select {
+    deferreds.forEach {
+        it.onAwait { result ->
+            deferreds.forEach { it.cancel(CancellationException()) }
+            return@onAwait result
+        }
+    }
+}
+
+/**
+ * Splits this Flow into a Flow of lists each of the exactly [chunkSize] size. Skips the [skip] items after each chunk.
+ */
+fun <T> Flow<T>.chunked(chunkSize: Int, skip: Int = 0): Flow<List<T>> =
+    this.scan(emptyList<T>()) { accumulator, value ->
+        when {
+            accumulator.size < chunkSize + skip -> accumulator + value
+            else -> listOf(value)
+        }
+    }.filter { it.size == chunkSize }
