@@ -28,3 +28,4 @@
 * **Example 21** - Return the first emission of a Flow in a blocking fashion.
 * **Example 22** - Group related data while skipping over some of it.
 * **Example 23** - Cast each emission of the source Flow from [Any] to specific type.
+* **Example 24** - Upon completion of the Flow return the number of emissions from that Flow.
