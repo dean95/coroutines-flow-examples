@@ -7,9 +7,7 @@ import kotlinx.coroutines.runBlocking
  *
  * Use case: Know how many emissions have been sent out.
  */
-private suspend fun solve(source: Flow<Any>): Int {
-    TODO()
-}
+private suspend fun solve(source: Flow<Any>): Int = source.count()
 
 private fun main() = runBlocking {
     val source = flowOf(1, 2, 3, 4, 5).onEach { delay(100) }
