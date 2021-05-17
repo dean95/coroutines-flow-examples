@@ -6,9 +6,7 @@ import kotlinx.coroutines.runBlocking
  *
  * Use case: You get some data from a bad source and you expect it to be of a certain type that you require.
  */
-private fun solve(source: Flow<Any>): Flow<String> {
-    TODO()
-}
+private fun solve(source: Flow<Any>): Flow<String> = source.filterIsInstance()
 
 private fun main() = runBlocking {
     val source = flowOf<Any>("aa", "bb", "cc", "dd", "ee")
