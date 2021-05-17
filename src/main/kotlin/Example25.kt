@@ -1,6 +1,7 @@
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.emptyFlow
+import kotlinx.coroutines.flow.onEmpty
 import kotlinx.coroutines.runBlocking
 
 /**
@@ -8,9 +9,7 @@ import kotlinx.coroutines.runBlocking
  *
  * Use case: Continue with data if the stream is empty.
  */
-private fun solve(source: Flow<Int>): Flow<Int> {
-    TODO()
-}
+private fun solve(source: Flow<Int>): Flow<Int> = source.onEmpty { emit(5) }
 
 private fun main() = runBlocking {
     val source = emptyFlow<Int>()
