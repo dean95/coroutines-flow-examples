@@ -67,3 +67,10 @@ fun <T> Flow<T>.chunked(chunkSize: Int, skip: Int = 0): Flow<List<T>> =
             else -> listOf(value)
         }
     }.filter { it.size == chunkSize }
+
+/**
+ * Returns a Flow that repeats the sequence of items emitted by the current Flow [times] times.
+ */
+fun <T> Flow<T>.repeat(times: Int) = flow {
+    repeat(times) { emitAll(this@repeat) }
+}
