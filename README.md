@@ -30,3 +30,10 @@
 * **Example 23** - Cast each emission of the source Flow from [Any] to specific type.
 * **Example 24** - Upon completion of the Flow return the number of emissions from that Flow.
 * **Example 25** - In case the source Flow is empty return a default value.
+* **Example 26** - Delay each emission of the source Flow for the given time.
+* **Example 27** - Call the given action each time the source Flow emits a value.
+* **Example 28** - Call the given action when the long-running operation completes.
+* **Example 29** - Call the given action when the long-running operation errors.
+* **Example 30** - Call the given action before the long-running operation starts executing.
+* **Example 31** - Re-run a certain Flow a number of times.
+* **Example 32** - Terminate the operation if the timeout was exceeded.
