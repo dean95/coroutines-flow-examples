@@ -33,3 +33,4 @@
 * **Example 26** - Delay each emission of the source Flow for the given time.
 * **Example 27** - Call the given action each time the source Flow emits a value.
 * **Example 28** - Call the given action when the long-running operation completes.
+* **Example 29** - Call the given action when the long-running operation errors.
