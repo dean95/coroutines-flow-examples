@@ -31,3 +31,4 @@
 * **Example 24** - Upon completion of the Flow return the number of emissions from that Flow.
 * **Example 25** - In case the source Flow is empty return a default value.
 * **Example 26** - Delay each emission of the source Flow for the given time.
+* **Example 27** - Call the given action each time the source Flow emits a value.
