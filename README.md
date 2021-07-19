@@ -34,3 +34,4 @@
 * **Example 27** - Call the given action each time the source Flow emits a value.
 * **Example 28** - Call the given action when the long-running operation completes.
 * **Example 29** - Call the given action when the long-running operation errors.
+* **Example 30** - Call the given action before the long-running operation starts executing.
